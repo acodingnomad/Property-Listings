@@ -2,7 +2,7 @@ name: Weekly property listings
 
 on:
   schedule:
-    - cron: '0 17 * * 1'
+    - cron: '0 14 * * 1'   # 9am EST Monday (10am EDT during summer)
   workflow_dispatch:
 
 jobs:
