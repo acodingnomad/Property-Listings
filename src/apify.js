@@ -3,14 +3,6 @@ import { ApifyClient } from 'apify-client';
 const ZILLOW_ACTOR = 'maxcopell/zillow-scraper';
 const TRULIA_ACTOR = 'igolaizola/trulia-scraper';
 
-function slugifyZillow(location) {
-  return location.replace(/,\s*/g, '-').replace(/\s+/g, '-');
-}
-
-function buildZillowUrl(location) {
-  return `https://www.zillow.com/homes/for_sale/${encodeURIComponent(slugifyZillow(location))}/`;
-}
-
 function buildTruliaUrl(location) {
   const cityState = location.match(/^(.+?),\s*([A-Za-z]{2})$/);
   if (cityState) {
@@ -117,7 +109,9 @@ export async function fetchForSearch(client, search, maxItems, sourceFilter) {
   const tasks = [];
 
   if (!sourceFilter || sourceFilter === 'zillow') {
-    const searchUrls = search.locations.map((loc) => ({ url: buildZillowUrl(loc) }));
+    const searchUrls = search.zillowSearchUrls.map((entry) =>
+      typeof entry === 'string' ? { url: entry } : { url: entry.url },
+    );
     tasks.push(
       runActor(
         client,
@@ -146,7 +140,11 @@ export async function fetchForSearch(client, search, maxItems, sourceFilter) {
         runActor(client, TRULIA_ACTOR, { startUrls, maxItems }, `${search.tab}/Trulia`)
           .then((items) => items.map(normalizeTrulia))
           .catch((err) => {
-            console.error(`[${search.tab}/Trulia] failed: ${err.message}`);
+            if (/paid Actor|free trial has expired/i.test(err.message)) {
+              console.log(`[${search.tab}/Trulia] skipped — actor requires paid rental on Apify`);
+            } else {
+              console.error(`[${search.tab}/Trulia] failed: ${err.message}`);
+            }
             return [];
           }),
       );

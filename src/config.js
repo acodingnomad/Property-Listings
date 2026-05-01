@@ -23,6 +23,11 @@ export async function loadConfig() {
     if (!Array.isArray(s.locations) || s.locations.length === 0) {
       throw new Error(`search "${s.tab}" needs a non-empty "locations" array`);
     }
+    if (!Array.isArray(s.zillowSearchUrls) || s.zillowSearchUrls.length === 0) {
+      throw new Error(
+        `search "${s.tab}" needs a non-empty "zillowSearchUrls" array (paste full Zillow search URLs containing searchQueryState)`,
+      );
+    }
   }
 
   return {
