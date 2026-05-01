@@ -16,17 +16,6 @@
       "bathsMin": 2,
       "sqftMin": 1500,
       "lotMin": 0
-    },
-    {
-      "tab": "BK",
-      "locations": ["Brooklyn, NY"],
-      "zillowSearchUrls": [],
-      "priceMin": 1000000,
-      "priceMax": 2400000,
-      "bedsMin": 2,
-      "bathsMin": 2,
-      "sqftMin": 1250,
-      "lotMin": 0
     }
   ],
   "maxItemsPerSource": 200
