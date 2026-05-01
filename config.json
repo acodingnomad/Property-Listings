@@ -1,0 +1,25 @@
+{
+  "searches": [
+    {
+      "tab": "LA",
+      "locations": ["Los Angeles, CA"],
+      "priceMin": 0,
+      "priceMax": 1500000,
+      "bedsMin": 2,
+      "bathsMin": 1,
+      "sqftMin": 800,
+      "lotMin": 0
+    },
+    {
+      "tab": "BK",
+      "locations": ["Brooklyn, NY"],
+      "priceMin": 0,
+      "priceMax": 1200000,
+      "bedsMin": 2,
+      "bathsMin": 1,
+      "sqftMin": 700,
+      "lotMin": 0
+    }
+  ],
+  "maxItemsPerSource": 200
+}
