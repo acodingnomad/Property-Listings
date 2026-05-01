@@ -3,21 +3,21 @@
     {
       "tab": "LA",
       "locations": ["Los Angeles, CA"],
-      "priceMin": 0,
-      "priceMax": 1500000,
+      "priceMin": 1000000,
+      "priceMax": 2200000,
       "bedsMin": 2,
-      "bathsMin": 1,
-      "sqftMin": 800,
+      "bathsMin": 2,
+      "sqftMin": 1600,
       "lotMin": 0
     },
     {
       "tab": "BK",
       "locations": ["Brooklyn, NY"],
-      "priceMin": 0,
-      "priceMax": 1200000,
+      "priceMin": 1000000,
+      "priceMax": 2400000,
       "bedsMin": 2,
-      "bathsMin": 1,
-      "sqftMin": 700,
+      "bathsMin": 2,
+      "sqftMin": 1200,
       "lotMin": 0
     }
   ],
